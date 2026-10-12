@@ -122,7 +122,7 @@ h3 {
 }
 
 .mono {
-  font:400 10px/1.6 var(--mono);
+  font:400 11px/1.6 var(--mono);
   letter-spacing:.075em
 }
 
@@ -240,7 +240,7 @@ h3 {
   padding:18px 0;
   border-bottom:1px solid var(--line);
   color:var(--muted);
-  font-size:9px
+  font-size:11px
 }
 
 .cross {
@@ -261,7 +261,7 @@ h3 {
   background:#fff;
   border-radius:100px;
   padding:7px 13px;
-  font-size:9px
+  font-size:11px
 }
 
 .beta-label>span:last-child {
@@ -315,8 +315,8 @@ h3 {
 }
 
 .hero-footnote {
-  font-size:8px;
-  color:#728099;
+  font-size:11px;
+  color:#526780;
   letter-spacing:.11em;
   margin-top:26px
 }
@@ -342,13 +342,13 @@ h3 {
   display:flex;
   align-items:center;
   gap:9px;
-  font-size:9px
+  font-size:11px
 }
 
 .demo-note {
   color:var(--muted);
   margin-left:14px;
-  font-size:8px;
+  font-size:11px;
   letter-spacing:.06em
 }
 
@@ -363,7 +363,7 @@ h3 {
 }
 
 .icon-button span {
-  font-size:9px
+  font-size:11px
 }
 
 .scenario-tabs {
@@ -373,8 +373,8 @@ h3 {
 }
 
 .scenario-tabs button {
-  font:10px var(--mono);
-  color:#788398;
+  font:11px var(--mono);
+  color:#526780;
   padding:17px 19px;
   display:flex;
   align-items:center;
@@ -433,12 +433,12 @@ h3 {
   justify-content:space-between;
   align-items:center;
   gap:8px;
-  font-size:9px;
+  font-size:11px;
   letter-spacing:.05em
 }
 
 .panel-heading>span+span {
-  font-size:8px;
+  font-size:11px;
   color:var(--muted);
   letter-spacing:0
 }
@@ -537,12 +537,12 @@ h3 {
 }
 
 .speech-heading>.mono {
-  font-size:7px;
+  font-size:11px;
   color:#4475bc
 }
 
 .speech-response p {
-  font-size:10px;
+  font-size:11px;
   line-height:1.75;
   margin-top:5px;
   color:#41618c
@@ -551,7 +551,7 @@ h3 {
 .audio-button {
   margin-left:auto;
   padding:0 2px;
-  font-size:10px;
+  font-size:11px;
   color:#4475bc;
   min-width:24px;
   min-height:22px
@@ -608,20 +608,20 @@ h3 {
   display:flex;
   align-items:center;
   gap:10px;
-  font-size:10px;
-  color:#8994a7;
+  font-size:11px;
+  color:#526780;
   line-height:1.5
 }
 
 .plan-list li .step-icon {
-  font:9px var(--mono);
+  font:11px var(--mono);
   display:grid;
   place-items:center;
   min-width:16px;
   height:16px;
   border:1px solid var(--line);
   border-radius:50%;
-  color:#9ca8ba
+  color:#526780
 }
 
 .plan-list .complete {
@@ -649,9 +649,9 @@ h3 {
   display:flex;
   align-items:center;
   gap:9px;
-  font-size:7px;
+  font-size:11px;
   line-height:1.8;
-  color:#8a97ac;
+  color:#526780;
   border-top:1px solid var(--line);
   margin-top:21px;
   padding-top:11px;
@@ -664,7 +664,7 @@ h3 {
 }
 
 .plan-memory b {
-  font-size:8px;
+  font-size:11px;
   font-weight:400;
   color:#4c6180;
   letter-spacing:0
@@ -693,14 +693,14 @@ h3 {
   align-items:center;
   gap:10px;
   padding:0 10px;
-  font:8px var(--mono);
-  color:#7890ab
+  font:11px var(--mono);
+  color:#526780
 }
 
 .traffic-lights {
-  font-size:7px;
+  font-size:11px;
   letter-spacing:1px;
-  color:#b6c8dc;
+  color:#526780;
   white-space:nowrap
 }
 
@@ -711,16 +711,16 @@ h3 {
 .browser-content {
   padding:18px 19px;
   min-height:208px;
-  font-size:10px
+  font-size:11px
 }
 
 .browser-brand {
   display:flex;
   align-items:center;
   gap:7px;
-  font-size:8px;
+  font-size:11px;
   margin-bottom:18px;
-  color:#728098
+  color:#526780
 }
 
 .browser-brand b {
@@ -744,8 +744,8 @@ h3 {
 }
 
 .browser-subtitle {
-  color:#8b97a9;
-  font-size:8px
+  color:#526780;
+  font-size:11px
 }
 
 .mock-fields {
@@ -756,9 +756,9 @@ h3 {
 }
 
 .mock-fields label {
-  font-size:6px;
+  font-size:11px;
   letter-spacing:.02em;
-  color:#78869d
+  color:#526780
 }
 
 .mock-field {
@@ -767,8 +767,8 @@ h3 {
   border-radius:3px;
   min-height:25px;
   padding:5px 7px;
-  color:#8390a4;
-  font-size:8px;
+  color:#526780;
+  font-size:11px;
   background:#fbfcfd
 }
 
@@ -785,7 +785,7 @@ h3 {
 }
 
 .mock-tags span {
-  font-size:6px;
+  font-size:11px;
   border:1px solid var(--line);
   border-radius:3px;
   padding:2px 6px
@@ -800,7 +800,7 @@ h3 {
 .mock-submit {
   background:var(--ink);
   color:#fff;
-  font-size:7px;
+  font-size:11px;
   text-align:center;
   padding:5px;
   border-radius:3px;
@@ -812,8 +812,8 @@ h3 {
   gap:7px;
   align-items:center;
   margin-top:10px;
-  font-size:7px;
-  color:#6a7f9a;
+  font-size:11px;
+  color:#526780;
   letter-spacing:0
 }
 
@@ -835,7 +835,7 @@ h3 {
 }
 
 .timeline-label {
-  font-size:8px;
+  font-size:11px;
   color:var(--muted);
   white-space:nowrap
 }
@@ -852,8 +852,8 @@ h3 {
 }
 
 .timeline-steps button {
-  font:9px var(--mono);
-  color:#7f8ba0;
+  font:11px var(--mono);
+  color:#526780;
   position:relative;
   padding:17px 8px;
   white-space:nowrap;
@@ -861,7 +861,7 @@ h3 {
 }
 
 .timeline-steps button span {
-  font-size:7px;
+  font-size:11px;
   margin-right:5px;
   opacity:.6
 }
@@ -880,8 +880,8 @@ h3 {
   grid-template-columns:repeat(4,1fr);
   padding:25px 0;
   border-bottom:1px solid var(--line);
-  font-size:8px;
-  color:#8a95a6;
+  font-size:11px;
+  color:#526780;
   letter-spacing:.06em
 }
 
@@ -898,7 +898,7 @@ h3 {
 }
 
 .system-spec strong {
-  font-size:10px;
+  font-size:11px;
   font-weight:400;
   color:#546987;
   letter-spacing:0
@@ -914,13 +914,13 @@ h3 {
   align-items:center;
   border-top:1px solid #a8b9cf;
   padding-top:17px;
-  font-size:9px;
+  font-size:11px;
   color:#5c718f
 }
 
 .section-index>span:last-child {
-  font-size:8px;
-  color:#8a98ac
+  font-size:11px;
+  color:#526780
 }
 
 .section-intro {
@@ -940,7 +940,7 @@ h3 {
 
 .feature-tabs {
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+  grid-template-columns:1.25fr 1fr 1fr 1.2fr;
   border-bottom:1px solid #c4d1e2;
   gap:0
 }
@@ -949,7 +949,7 @@ h3 {
   font-size:11px;
   padding:18px 12px;
   text-align:left;
-  color:#7a879a;
+  color:#526780;
   border-bottom:2px solid transparent;
   display:flex;
   gap:12px;
@@ -958,8 +958,8 @@ h3 {
 }
 
 .feature-tabs button span {
-  font:8px var(--mono);
-  color:#99a8bc
+  font:11px var(--mono);
+  color:#526780
 }
 
 .feature-tabs button[aria-selected=true] {
@@ -985,7 +985,7 @@ h3 {
 }
 
 .feature-number {
-  font-size:9px;
+  font-size:11px;
   color:var(--blue)
 }
 
@@ -1025,8 +1025,8 @@ h3 {
 }
 
 .feature-demo-label {
-  font-size:7px;
-  color:#8a9ab0
+  font-size:11px;
+  color:#526780
 }
 
 .feature-visual {
@@ -1043,8 +1043,8 @@ h3 {
 }
 
 .chat-label {
-  font:8px var(--mono);
-  color:#8090a6;
+  font:11px var(--mono);
+  color:#526780;
   letter-spacing:.055em;
   margin-bottom:8px
 }
@@ -1089,7 +1089,7 @@ h3 {
 }
 
 .chat-message .speech-heading>.mono {
-  font-size:8px
+  font-size:11px
 }
 
 .proactive-alert {
@@ -1099,14 +1099,14 @@ h3 {
 }
 
 .proactive-label {
-  font-size:7px;
+  font-size:11px;
   letter-spacing:.04em;
-  color:#7c8da6;
+  color:#526780;
   margin-bottom:9px
 }
 
 .alert-line {
-  font-size:10px;
+  font-size:11px;
   display:flex;
   gap:12px;
   align-items:center;
@@ -1127,10 +1127,10 @@ h3 {
 }
 
 .alert-line time {
-  font:7px var(--mono);
+  font:11px var(--mono);
   margin-left:auto;
   white-space:nowrap;
-  color:#8c9cb0
+  color:#526780
 }
 
 .sentence-parts {
@@ -1156,9 +1156,9 @@ h3 {
 }
 
 .sentence-parts span {
-  font:7px var(--mono);
+  font:11px var(--mono);
   display:block;
-  color:#7c8da4
+  color:#526780
 }
 
 .feature-plan {
@@ -1196,7 +1196,7 @@ h3 {
 }
 
 .log-title {
-  font:8px var(--mono);
+  font:11px var(--mono);
   padding:13px;
   border-bottom:1px solid var(--line);
   display:flex;
@@ -1209,8 +1209,8 @@ h3 {
   grid-template-columns:35px 45px 1fr;
   gap:10px;
   padding:12px 15px;
-  font:9px/1.7 var(--mono);
-  color:#7890ac;
+  font:11px/1.7 var(--mono);
+  color:#526780;
   border-bottom:1px solid #f1f5f8
 }
 
@@ -1226,13 +1226,13 @@ h3 {
 
 .log-row em {
   font-style:normal;
-  font-size:8px
+  font-size:11px
 }
 
 .cloud-footnote {
   display:flex;
   justify-content:space-between;
-  font-size:8px;
+  font-size:11px;
   color:var(--muted);
   padding-top:17px
 }
@@ -1246,8 +1246,8 @@ h3 {
 }
 
 .memory-box>div:first-child {
-  font-size:8px;
-  color:#6e85a3;
+  font-size:11px;
+  color:#526780;
   margin-bottom:10px;
   display:flex;
   justify-content:space-between
@@ -1257,7 +1257,7 @@ h3 {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:6px;
-  font:9px var(--mono);
+  font:11px var(--mono);
   color:var(--muted)
 }
 
@@ -1276,7 +1276,7 @@ h3 {
 .progress-card>div:first-child {
   display:flex;
   justify-content:space-between;
-  font:8px var(--mono);
+  font:11px var(--mono);
   color:var(--muted)
 }
 
@@ -1301,7 +1301,7 @@ h3 {
 }
 
 .progress-card .speech-heading {
-  font-size:10px;
+  font-size:11px;
   gap:12px;
   color:#577397
 }
@@ -1310,27 +1310,27 @@ h3 {
   display:flex;
   align-items:center;
   justify-content:space-between;
-  font-size:10px;
+  font-size:11px;
   padding:17px 0;
   border-bottom:1px solid #dce5ef;
   gap:16px
 }
 
 .history-item span {
-  color:#8a9bb1;
-  font:8px var(--mono);
+  color:#526780;
+  font:11px var(--mono);
   display:block
 }
 
 .history-item button {
-  font:8px var(--mono);
+  font:11px var(--mono);
   color:var(--blue);
   white-space:nowrap;
   padding:7px
 }
 
 .replay-status {
-  font:8px var(--mono);
+  font:11px var(--mono);
   color:var(--blue);
   min-height:18px;
   margin-top:8px
@@ -1341,8 +1341,8 @@ h3 {
   justify-content:space-between;
   border-bottom:1px solid var(--line);
   padding:9px 0;
-  font-size:7px;
-  color:#70839e;
+  font-size:11px;
+  color:#526780;
   gap:10px
 }
 
@@ -1395,7 +1395,7 @@ h3 {
 }
 
 .success-copy {
-  font-size:10px;
+  font-size:11px;
   line-height:1.8;
   color:var(--muted);
   margin-top:10px
@@ -1429,7 +1429,7 @@ h3 {
 .hardware-switch button {
   padding:9px 16px;
   border-radius:3px;
-  font-size:10px;
+  font-size:11px;
   color:var(--muted);
   transition:background .2s
 }
@@ -1454,8 +1454,8 @@ h3 {
 }
 
 .hardware-spec dt {
-  font:8px var(--mono);
-  color:#8595ab;
+  font:11px var(--mono);
+  color:#526780;
   align-self:center
 }
 
@@ -1465,8 +1465,8 @@ h3 {
 }
 
 .hardware-caption {
-  font-size:7px;
-  color:#8a99ad
+  font-size:11px;
+  color:#526780
 }
 
 .device-scene {
@@ -1494,8 +1494,8 @@ h3 {
   top:22px;
   left:24px;
   right:24px;
-  font-size:9px;
-  color:#758ba8
+  font-size:11px;
+  color:#526780
 }
 
 .device-coordinates b {
@@ -1503,137 +1503,17 @@ h3 {
   color:#25446f
 }
 
-.device-lanyard {
-  position:absolute;
-  width:140px;
-  height:280px;
-  border:4px solid #a9b7c8;
-  border-bottom-color:transparent;
-  left:50%;
-  top:-119px;
-  border-radius:90px;
-  transform:translateX(-50%) rotate(-6deg);
-  box-shadow:inset 1px 1px 2px #fff;
-  transition:opacity .5s,transform .5s
-}
-
-.device-body {
-  position:absolute;
-  left:50%;
-  top:49%;
-  width:126px;
-  height:166px;
-  transform:translate(-50%,-50%) rotate(-6deg);
-  border-radius:42px;
-  background:linear-gradient(135deg,#fff 10%,#f2f5f8 50%,#dce4ee 90%);
-  border:1px solid #c8d3e2;
-  box-shadow:inset 3px 3px 8px #fff,inset -4px -4px 8px #c6d1df,13px 20px 25px #4f698830;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  transition:transform .6s,top .6s;
-  z-index:3
-}
-
-.device-body img {
-  width:66px;
-  height:68px;
-  object-fit:contain;
-  filter:saturate(.85);
-  margin-top:7px
-}
-
-.device-body>span {
-  font-size:7px;
-  letter-spacing:.09em;
-  color:#7890aa;
-  margin-top:12px
-}
-
-.device-speaker {
-  position:absolute;
-  top:17px;
-  width:22px;
-  height:3px;
-  border-radius:3px;
-  background:#b4c0cc;
-  box-shadow:0 1px 0 #fff
-}
-
-.device-light {
-  width:22px;
-  height:3px;
-  border-radius:3px;
-  background:#419aff;
-  box-shadow:0 0 12px #347ff170;
-  margin-top:8px
-}
-
-.device-shadow {
-  position:absolute;
-  width:180px;
-  height:24px;
-  background:#8294ad30;
-  filter:blur(11px);
-  border-radius:50%;
-  left:50%;
-  top:75%;
-  transform:translateX(-50%)
-}
-
-.device-stand {
-  opacity:0;
-  position:absolute;
-  width:157px;
-  height:48px;
-  left:50%;
-  top:69%;
-  transform:translate(-50%,20px);
-  border-radius:50%;
-  background:linear-gradient(145deg,#fbfdff,#b9c8da);
-  box-shadow:0 8px 0 #b3c1d3,0 16px 22px #55719333;
-  transition:opacity .5s,transform .6s;
-  z-index:2
-}
-
-.device-stand>div {
-  position:absolute;
-  width:38px;
-  height:92px;
-  bottom:22px;
-  left:60px;
-  border-radius:8px;
-  background:linear-gradient(90deg,#cedbe9,#f0f5fc 50%,#b3c3d7);
-  transform:skewX(-9deg)
-}
-
-.device-scene[data-mode=desk] .device-lanyard {
-  opacity:0;
-  transform:translateX(-50%) translateY(-80px)
-}
-
-.device-scene[data-mode=desk] .device-stand {
-  opacity:1;
-  transform:translate(-50%,0)
-}
-
-.device-scene[data-mode=desk] .device-body {
-  transform:translate(-50%,-50%) rotate(0);
-  top:43%
-}
-
 .device-callout {
   position:absolute;
   display:flex;
   align-items:center;
   gap:9px;
-  color:#7d93af;
+  color:#526780;
   z-index:4
 }
 
 .device-callout .mono {
-  font-size:7px
+  font-size:11px
 }
 
 .device-callout>span:first-child {
@@ -1673,8 +1553,8 @@ h3 {
   display:flex;
   align-items:center;
   justify-content:space-between;
-  font-size:8px;
-  color:#7186a0
+  font-size:11px;
+  color:#526780
 }
 
 .device-bottom>span:last-child {
@@ -1714,21 +1594,21 @@ h3 {
 }
 
 .platforms>div>span {
-  font-size:10px;
+  font-size:11px;
   line-height:1.6
 }
 
 .platforms small {
   display:block;
-  font-size:8px;
-  color:#8796aa;
+  font-size:11px;
+  color:#526780;
   margin-top:3px
 }
 
 .platforms .platform-state {
   margin-left:auto;
-  color:#9dacc0;
-  font:8px var(--mono);
+  color:#526780;
+  font:11px var(--mono);
   align-self:flex-start
 }
 
@@ -1746,8 +1626,8 @@ h3 {
 }
 
 .roadmap-date {
-  font-size:9px;
-  color:#778ba6;
+  font-size:11px;
+  color:#526780;
   letter-spacing:.035em
 }
 
@@ -1799,11 +1679,11 @@ h3 {
 
 .roadmap-status {
   display:inline-block;
-  font-size:7px;
+  font-size:11px;
   margin-top:15px;
   padding:3px 6px;
   background:#f0f4f8;
-  color:#7286a3;
+  color:#526780;
   border:1px solid #e2e9f2;
   border-radius:3px;
   letter-spacing:.02em
@@ -1816,8 +1696,8 @@ h3 {
 }
 
 .roadmap-note {
-  font-size:9px;
-  color:#8897ac;
+  font-size:11px;
+  color:#526780;
   margin-top:29px
 }
 
@@ -1833,8 +1713,8 @@ h3 {
 }
 
 .join-copy>.mono {
-  font-size:8px;
-  color:#748baa
+  font-size:11px;
+  color:#526780
 }
 
 .join-copy h2 {
@@ -1862,9 +1742,9 @@ h3 {
   justify-content:space-between;
   padding:13px 17px;
   border-bottom:1px solid var(--line);
-  font-size:8px;
+  font-size:11px;
   background:#fafcff;
-  color:#69809e
+  color:#526780
 }
 
 .terminal-heading>span:first-child {
@@ -1891,8 +1771,8 @@ h3 {
 
 .terminal-body label {
   display:block;
-  font-size:8px;
-  color:#8b9ab1;
+  font-size:11px;
+  color:#526780;
   margin-bottom:8px
 }
 
@@ -1915,24 +1795,24 @@ h3 {
 }
 
 .email-row input::placeholder {
-  color:#96a3b6
+  color:#526780
 }
 
 .email-row .button {
-  font-size:9px;
+  font-size:11px;
   padding:10px 13px;
   gap:12px;
   border-radius:3px
 }
 
 .form-note {
-  font-size:8px;
-  color:#8796aa;
+  font-size:11px;
+  color:#526780;
   margin-top:13px
 }
 
 .form-status {
-  font-size:10px;
+  font-size:11px;
   line-height:1.8;
   color:#2864b6;
   margin-top:10px
@@ -1955,14 +1835,14 @@ h3 {
 }
 
 .site-footer>.mono {
-  font-size:7px;
-  color:#93a0b1;
+  font-size:11px;
+  color:#526780;
   letter-spacing:.045em
 }
 
 .copyright {
-  font-size:8px;
-  color:#7889a0
+  font-size:11px;
+  color:#526780
 }
 
 @keyframes voice-wave {
@@ -2028,26 +1908,26 @@ h3 {
     gap:8px
   }
   .scenario-tabs button>span:first-child {
-    font-size:10px
+    font-size:11px
   }
   .demo-note {
     display:none
   }
   .panel-heading {
-    font-size:8px
+    font-size:11px
   }
   .panel-heading>span+span {
-    font-size:7px
+    font-size:11px
   }
   .timeline {
     gap:14px;
     padding-inline:14px
   }
   .timeline-label {
-    font-size:7px
+    font-size:11px
   }
   .timeline-steps button {
-    font-size:8px;
+    font-size:11px;
     padding-inline:4px
   }
   .feature-panel {
@@ -2057,7 +1937,7 @@ h3 {
     padding:23px
   }
   .feature-tabs button {
-    font-size:10px;
+    font-size:11px;
     gap:7px;
     padding-inline:6px
   }
@@ -2065,7 +1945,7 @@ h3 {
     gap:35px
   }
   .device-callout .mono {
-    font-size:6px
+    font-size:11px
   }
   .device-callout>span:first-child {
     width:25px
@@ -2081,7 +1961,7 @@ h3 {
     gap:8px
   }
   .platforms>div>span {
-    font-size:9px
+    font-size:11px
   }
   .platforms .platform-state {
     display:none
@@ -2100,7 +1980,7 @@ h3 {
     font-size:14px
   }
   .roadmap-date {
-    font-size:8px
+    font-size:11px
   }
 }
 
@@ -2117,13 +1997,13 @@ h3 {
   }
   .nav-links {
     gap:14px;
-    font-size:10px
+    font-size:11px
   }
   .nav-links a:nth-child(2) {
     display:none
   }
   .nav-cta {
-    font-size:9px;
+    font-size:11px;
     padding:10px 12px;
     gap:10px
   }
@@ -2166,23 +2046,23 @@ h3 {
     font-size:17px
   }
   .mock-fields label {
-    font-size:8px
+    font-size:11px
   }
   .mock-field {
-    font-size:10px;
+    font-size:11px;
     min-height:28px
   }
   .mock-tags span {
-    font-size:8px
+    font-size:11px
   }
   .mock-submit {
-    font-size:9px
+    font-size:11px
   }
   .browser-chrome {
-    font-size:9px
+    font-size:11px
   }
   .browser-activity {
-    font-size:8px
+    font-size:11px
   }
   .timeline {
     display:block;
@@ -2194,13 +2074,13 @@ h3 {
   }
   .timeline-steps button {
     padding-block:11px;
-    font-size:9px
+    font-size:11px
   }
   .system-spec>div {
     padding-left:12px
   }
   .system-spec strong {
-    font-size:8px
+    font-size:11px
   }
   .section {
     padding-top:75px
@@ -2251,10 +2131,10 @@ h3 {
     font-size:12px
   }
   .hardware-spec dd {
-    font-size:10px
+    font-size:11px
   }
   .hardware-switch button {
-    font-size:9px;
+    font-size:11px;
     padding-inline:12px
   }
   .device-callout {
@@ -2264,7 +2144,7 @@ h3 {
     min-height:400px
   }
   .device-bottom {
-    font-size:6px
+    font-size:11px
   }
   .platforms {
     grid-template-columns:repeat(2,1fr)
@@ -2304,7 +2184,7 @@ h3 {
     font-size:36px
   }
   .join-copy>p {
-    font-size:10px
+    font-size:11px
   }
   .email-row {
     flex-direction:column
@@ -2319,13 +2199,13 @@ h3 {
     display:none
   }
   .section-index>span:last-child {
-    font-size:7px
+    font-size:11px
   }
   .section-intro>p {
     font-size:11px
   }
   .edition {
-    font-size:7px
+    font-size:11px
   }
 }
 
@@ -2353,13 +2233,13 @@ h3 {
   }
   .nav-cta {
     margin-left:auto;
-    font-size:9px;
+    font-size:11px;
     padding:9px 10px;
     gap:9px
   }
   .edition {
     padding-block:13px;
-    font-size:6px
+    font-size:11px
   }
   .edition .cross {
     margin-left:13px
@@ -2368,7 +2248,7 @@ h3 {
     padding:37px 8px 31px
   }
   .beta-label {
-    font-size:7px;
+    font-size:11px;
     padding:6px 9px;
     gap:6px
   }
@@ -2387,16 +2267,16 @@ h3 {
     margin-top:23px
   }
   .hero-actions .button {
-    font-size:10px;
+    font-size:11px;
     padding:12px 15px;
     gap:13px
   }
   .text-link {
-    font-size:10px;
+    font-size:11px;
     gap:13px
   }
   .hero-footnote {
-    font-size:6px;
+    font-size:11px;
     letter-spacing:.045em;
     margin-top:22px
   }
@@ -2404,21 +2284,21 @@ h3 {
     padding:10px 12px
   }
   .demo-toolbar>.mono {
-    font-size:7px;
+    font-size:11px;
     gap:7px
   }
   .icon-button span {
-    font-size:8px
+    font-size:11px
   }
   .scenario-tabs button {
     flex-direction:column;
     gap:5px;
     padding:11px 8px;
     align-items:flex-start;
-    font-size:7px
+    font-size:11px
   }
   .scenario-tabs button>span:first-child {
-    font-size:9px;
+    font-size:11px;
     line-height:1.55
   }
   .scenario-tabs button>span:last-child {
@@ -2436,7 +2316,7 @@ h3 {
     padding:20px
   }
   .voice-panel .panel-heading {
-    font-size:9px
+    font-size:11px
   }
   .orb-zone {
     height:142px;
@@ -2476,17 +2356,17 @@ h3 {
     font-size:11px
   }
   .plan-memory {
-    font-size:7px;
+    font-size:11px;
     margin-top:18px
   }
   .plan-memory b {
-    font-size:9px
+    font-size:11px
   }
   .panel-heading {
-    font-size:9px
+    font-size:11px
   }
   .panel-heading>span+span {
-    font-size:8px
+    font-size:11px
   }
   .execution-panels>.browser-panel {
     padding:20px
@@ -2495,10 +2375,10 @@ h3 {
     padding:20px
   }
   .timeline-label {
-    font-size:7px
+    font-size:11px
   }
   .timeline-steps button {
-    font-size:8px;
+    font-size:11px;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -2506,20 +2386,20 @@ h3 {
     padding:12px 3px
   }
   .timeline-steps button span {
-    font-size:7px;
+    font-size:11px;
     margin:0
   }
   .system-spec {
     grid-template-columns:1fr 1fr;
     row-gap:20px;
     padding:22px 0;
-    font-size:7px
+    font-size:11px
   }
   .system-spec>div:nth-child(3) {
     border-left:0
   }
   .system-spec strong {
-    font-size:9px
+    font-size:11px
   }
   .system-spec>div {
     padding-left:16px
@@ -2528,7 +2408,7 @@ h3 {
     padding-top:61px
   }
   .section-index {
-    font-size:8px;
+    font-size:11px;
     padding-top:13px
   }
   .section-index>span:last-child {
@@ -2556,7 +2436,7 @@ h3 {
   }
   .feature-tabs button {
     flex:0 0 auto;
-    font-size:10px;
+    font-size:11px;
     padding:13px 13px;
     gap:7px
   }
@@ -2598,11 +2478,11 @@ h3 {
     margin-left:30px
   }
   .alert-line {
-    font-size:9px;
+    font-size:11px;
     gap:8px
   }
   .alert-line time {
-    font-size:6px
+    font-size:11px
   }
   .feature-copy li {
     font-size:11px
@@ -2631,7 +2511,7 @@ h3 {
     margin-top:22px
   }
   .hardware-switch button {
-    font-size:10px;
+    font-size:11px;
     padding-inline:17px
   }
   .device-scene {
@@ -2641,10 +2521,10 @@ h3 {
     display:flex
   }
   .device-callout .mono {
-    font-size:6px
+    font-size:11px
   }
   .device-bottom {
-    font-size:7px
+    font-size:11px
   }
   .platforms {
     margin-top:25px
@@ -2658,10 +2538,10 @@ h3 {
     margin-right:3px
   }
   .platforms>div>span {
-    font-size:9px
+    font-size:11px
   }
   .platforms small {
-    font-size:7px
+    font-size:11px
   }
   .roadmap-track {
     grid-template-columns:repeat(2,1fr);
@@ -2675,7 +2555,7 @@ h3 {
     display:none
   }
   .roadmap-date {
-    font-size:8px
+    font-size:11px
   }
   .roadmap-node {
     height:23px;
@@ -2689,7 +2569,7 @@ h3 {
     margin-top:12px
   }
   .roadmap-note {
-    font-size:8px
+    font-size:11px
   }
   .join-section {
     grid-template-columns:1fr;
@@ -2718,11 +2598,11 @@ h3 {
   }
   .email-row .button {
     width:100%;
-    font-size:10px;
+    font-size:11px;
     padding:12px
   }
   .form-note {
-    font-size:9px;
+    font-size:11px;
     line-height:1.8
   }
   .site-footer {
@@ -2734,10 +2614,10 @@ h3 {
     font-size:15px
   }
   .copyright {
-    font-size:7px
+    font-size:11px
   }
   .log-row {
-    font-size:8px;
+    font-size:11px;
     gap:7px;
     grid-template-columns:30px 40px 1fr
   }
@@ -2745,16 +2625,16 @@ h3 {
     font-size:13px
   }
   .cloud-footnote {
-    font-size:7px
+    font-size:11px
   }
   .progress-card {
     padding:16px
   }
   .history-item {
-    font-size:9px
+    font-size:11px
   }
   .browser-subtitle {
-    font-size:9px
+    font-size:11px
   }
 }
 
@@ -2769,4 +2649,105 @@ h3 {
   .waveform i {
     transform:none!important
   }
+}
+
+/* Revision: clear type, comfortable form spacing, and integrated droplet hardware. */
+.hero-copy { padding-top:64px; }
+.hero h1 { font-size:clamp(46px,5.1vw,72px); }
+.hero-copy>p { max-width:870px; font-size:16px; }
+.hero-footnote, .demo-note, .section-index>span:last-child, .feature-demo-label,
+.hardware-caption, .roadmap-note, .form-note, .copyright { color:#526780; }
+.button span, .text-link>span, .beta-label>span:last-child,
+.scenario-tabs button>span:last-child, .timeline-label>span,
+.terminal-heading>span:last-child { font-size:20px; line-height:1; flex-shrink:0; }
+.feature-copy li:before { font-size:18px; }
+.button { min-height:46px; }
+.panel-heading, .panel-heading>span+span { font-size:10px; }
+.scenario-tabs button>span:first-child, .feature-tabs button,
+.system-spec strong, .plan-list li, .hardware-spec dd { font-size:12px; }
+.feature-copy>p, .hardware-copy>p { font-size:14px; }
+.feature-copy li { font-size:12px; }
+.speech-response p { font-size:12px; }
+.audio-button { min-width:30px; min-height:28px; font-size:14px; }
+.feature-visual .speech-heading { flex-wrap:wrap; }
+.feature-visual .speech-heading>.mono { font-size:10px; }
+.merged-plan { margin-top:22px; }
+.email-row { border:0; padding:0; gap:12px; align-items:stretch; }
+.email-row input { flex:1 1 0; width:0; min-width:0; border:1px solid #b9c9de; border-radius:5px; padding:13px 15px; font-size:14px; background:white; }
+.email-row input:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
+.email-row input::placeholder { color:#61748d; }
+.email-row .button { flex:0 0 auto; font-size:12px; padding:12px 17px; gap:15px; border-radius:5px; }
+.form-note { font-size:11px; line-height:1.8; }
+.hardware-drawing { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+.pendant-assembly, .desk-assembly { transition:opacity .5s, transform .5s; transform-origin:50% 75%; }
+.desk-assembly { opacity:0; transform:translateY(12px); }
+.device-scene[data-mode=desk] .desk-assembly { opacity:1; transform:translateY(0); }
+.device-scene[data-mode=desk] .pendant-assembly { opacity:0; transform:translateY(-12px); }
+.device-callout .mono { font-size:9px; color:#486582; }
+.device-callout>span:first-child { width:32px; }
+.callout-voice { right:16px; top:44%; }
+.callout-memory { left:16px; bottom:22%; }
+.device-bottom { font-size:10px; color:#486582; }
+.cart-items { margin-top:12px; }
+.cart-item { display:flex; align-items:center; gap:9px; padding:7px 0; border-bottom:1px solid #e3eaf3; }
+.cart-thumb { display:grid; place-items:center; width:29px; height:31px; background:#f2f6fb; border-radius:4px; font-size:18px; }
+.cart-item b { display:block; font-size:11px; font-weight:400; }
+.cart-item small { display:block; font-size:10px; color:#586d86; }
+.cart-state { margin-left:auto; font-size:13px; color:#2764ba; }
+.cart-pending .cart-state { color:#697a90; }
+.browser-brand .walmart-mark { color:#ffc83d; background:#1767b7; font-size:16px; }
+.browser-brand .airtable-mark { color:white; background:#e29435; font-size:16px; }
+.airtable-grid { border:1px solid #d2deec; border-radius:4px; margin-top:20px; overflow:hidden; }
+.airtable-row { display:grid; grid-template-columns:1.5fr 1fr; align-items:center; gap:8px; padding:11px 9px; border-bottom:1px solid #e1e8f1; font-size:10px; }
+.airtable-row:last-child { border-bottom:0; }
+.table-head { background:#f0f5fb; color:#506984; font-size:10px; }
+.deal-status { background:#f0f2f6; padding:3px 6px; border-radius:4px; font-size:10px; color:#52657d; justify-self:start; }
+.deal-status.signed { background:#e3f2ec; color:#27654d; }
+.progress-card .speech-heading { font-size:12px; line-height:1.8; }
+.progress-card .waveform { flex-shrink:0; }
+.progress-meter span { width:50%; }
+.history-item { font-size:12px; }
+.history-item span { font-size:10px; margin-top:4px; color:#526780; }
+.history-item button { font-size:11px; padding:10px 3px; }
+@media(max-width:1050px) {
+  .feature-tabs button { gap:8px; font-size:11px; }
+  .demo-toolbar>.mono { font-size:10px; }
+  .system-spec strong { font-size:11px; }
+  .scenario-tabs button { gap:8px; padding-inline:12px; }
+  .scenario-tabs button>span:first-child { font-size:11px; }
+  .device-callout { display:none; }
+}
+@media(max-width:780px) {
+  .hero h1 { font-size:54px; }
+  .hero-copy>p { font-size:14px; }
+  .email-row input { width:100%; flex:auto; }
+  .feature-tabs { grid-template-columns:1.35fr 1fr .8fr 1.2fr; }
+  .timeline-label { font-size:10px; }
+  .timeline-steps button { font-size:11px; }
+  .section-index { font-size:10px; }
+  .section-index>span:last-child { font-size:9px; }
+}
+@media(max-width:520px) {
+  .hero-copy { padding-top:38px; }
+  .hero h1 { font-size:clamp(35px,9.5vw,47px); }
+  .hero-copy>p { font-size:13px; }
+  .hero-footnote { font-size:10px; line-height:1.9; }
+  .button span, .text-link>span { font-size:20px; }
+  .beta-label { font-size:10px; }
+  .scenario-tabs button { padding:11px 8px; }
+  .scenario-tabs button>span:first-child { font-size:11px; }
+  .scenario-tabs button>span:last-child { display:none; }
+  .feature-tabs button { font-size:12px; }
+  .email-row { flex-direction:column; flex-wrap:nowrap; gap:12px; }
+  .email-row input { width:100%; flex:auto; font-size:14px; min-height:48px; }
+  .email-row .button { width:100%; font-size:13px; }
+  .feature-copy>p, .hardware-copy>p { font-size:14px; }
+  .history-item { font-size:11px; gap:10px; }
+  .history-item span { font-size:9px; }
+  .device-coordinates { font-size:10px; }
+  .device-bottom { font-size:9px; }
+  .platforms>div>span { font-size:11px; }
+  .platforms small { font-size:10px; }
+  .roadmap-date { font-size:10px; }
+  .site-footer { align-items:flex-start; flex-direction:column; }
 }

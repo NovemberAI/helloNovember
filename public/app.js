@@ -6,20 +6,20 @@ const renderWaves = () => $$('.waveform').forEach(el => { el.innerHTML = wave();
 const steps = ['Ready to listen', 'Listening', 'Making a plan', 'Working · speaking', 'Reporting back', 'Done'];
 const examples = [
   {
-    prompt: '“Sign me up for the Fall Career Fair.”',
-    plans: ['Open the career fair page', 'Fill in your details', 'Choose your interests', 'Complete registration', 'Add it to your calendar'],
-    memory: 'Computer science · Class of ’28',
-    urls: ['about:blank', 'about:blank', 'careers.asu.edu', 'careers.asu.edu', 'calendar.google.com', 'calendar.google.com'],
-    speech: ['“Hey. What can I do for you?”', '“I’m listening.”', '“I’ll sign you up using your saved details.”', '“I’ve got your details. Picking your interests now.”', '“You’re registered. Wednesday at ten — it’s on your calendar.”', '“All done. Your afternoon is still free.”'],
-    activities: ['Waiting for your voice', 'Understanding your request', 'Opening the registration page', 'Filling in your interests…', 'Registration confirmed · calendar updated', 'Result saved to your history'],
+    prompt: '“Add my usual groceries to my Walmart cart.”',
+    plans: ['Open your Walmart account', 'Recall your usual groceries', 'Find your preferred brands', 'Add everything to your cart', 'Read back what’s ready'],
+    memory: 'Oat milk · Wholegrain · Your usual brands',
+    urls: ['about:blank', 'about:blank', 'walmart.com', 'walmart.com/cart', 'walmart.com/cart', 'walmart.com/cart'],
+    speech: ['“Hey. What can I do for you?”', '“Your usual groceries. Got it.”', '“I’ll find your usual brands and build your cart.”', '“Oat milk and coffee are in. Finding your usual bread.”', '“Your cart is ready: oat milk, coffee, bread, and blueberries.”', '“Everything’s in your cart, ready when you are.”'],
+    activities: ['Waiting for your voice', 'Understanding your request', 'Finding your preferred brands', 'Adding your usual groceries…', '4 items ready in your cart', 'Cart saved · ready to review'],
   },
   {
-    prompt: '“Put every due date from my syllabi in one doc.”',
-    plans: ['Open your course dashboard', 'Read all three syllabi', 'Collect the due dates', 'Sort and write one document', 'Save it to your Drive'],
-    memory: 'CSE 310 · MAT 343 · ENG 302',
-    urls: ['about:blank', 'about:blank', 'canvas.asu.edu', 'docs.google.com', 'docs.google.com', 'docs.google.com'],
-    speech: ['“Hey. What are we working on?”', '“Every course, in one place. Got it.”', '“I’ll read your three syllabi and organize the deadlines.”', '“I found thirty-one dates. Putting them in order now.”', '“Your semester is in one doc, sorted by date.”', '“Saved to your Drive. You can ask me about any deadline.”'],
-    activities: ['Waiting for your voice', 'Understanding your request', 'Reading 3 syllabi', 'Writing 18 of 31 deadlines…', 'All 31 deadlines saved', 'Document ready to revisit'],
+    prompt: '“Update Airtable with the brand deals that just signed.”',
+    plans: ['Open your brand deals base', 'Find the signed agreements', 'Match them to your records', 'Update status and next steps', 'Report what changed'],
+    memory: 'Creator partnerships · Your deal tracker',
+    urls: ['about:blank', 'about:blank', 'airtable.com', 'airtable.com/partnerships', 'airtable.com/partnerships', 'airtable.com/partnerships'],
+    speech: ['“Hey. What are we working on?”', '“Your signed brand deals. I’m on it.”', '“I’ll match the agreements to your partnership records.”', '“The YouTube deal is marked signed. Updating the X partnership next.”', '“Both deals are marked signed, with the next deliverables added.”', '“Your Airtable is up to date. I’ll remind you before the deliverables are due.”'],
+    activities: ['Waiting for your voice', 'Understanding your request', 'Matching signed agreements', 'Updating 1 of 2 deal records…', '2 deals updated · next steps added', 'Partnership tracker is up to date'],
   },
   {
     prompt: '“Tell me when my new video hits ten thousand views.”',
@@ -37,18 +37,13 @@ let timer;
 let speechUtterance;
 let feature = 0;
 
-function field(label, value, filled) {
-  return `<label>${label}<div class="mock-field ${filled ? 'filled' : ''}">${filled ? value : '—'}</div></label>`;
-}
-
 function browserMarkup() {
   const executing = step >= 3;
   const complete = step >= 4;
   if (scenario === 0) {
-    if (complete) return '<div class="browser-brand"><b style="background:#377cf1">31</b> Calendar · Wed, Oct 21</div><div class="success-mark">✓</div><h4>Fall Career Fair</h4><p class="browser-subtitle">10:00 AM – 3:00 PM · Memorial Union</p><p class="success-copy">Registration confirmed.<br> Added to your calendar by November.</p>';
-    return `<div class="browser-brand"><b>ASU</b> Career Services</div><h4>Fall Career Fair</h4><p class="browser-subtitle">A next step, taken for you.</p><div class="mock-fields">${field('FULL NAME', 'Maya Patel', executing)}${field('MAJOR', 'Computer science', executing)}</div><div class="mock-tags"><span class="${executing ? 'selected' : ''}">Software</span><span class="${executing ? 'selected' : ''}">Product</span><span>Data</span><span>Design</span></div><div class="mock-submit">${executing ? 'Completing registration →' : 'Registration'}</div>`;
+    return `<div class="browser-brand"><b class="walmart-mark">✳</b> Walmart · Your cart</div><h4>${complete ? 'Your usuals, ready.' : 'A little less to do.'}</h4><p class="browser-subtitle">${complete ? '4 items · ready to review' : 'Adding your preferred brands'}</p><div class="cart-items">${[['🥛', 'Oat milk', 'Your usual brand'], ['☕', 'Ground coffee', 'Medium roast'], ['🍞', 'Wholegrain bread', 'Your usual loaf'], ['🫐', 'Blueberries', 'Fresh · 1 pack']].map(([icon, name, detail], i) => `<div class="cart-item ${!complete && (!executing || i > 1) ? 'cart-pending' : ''}"><span class="cart-thumb" aria-hidden="true">${icon}</span><span><b>${name}</b><small>${detail}</small></span><span class="cart-state">${complete || executing && i < 2 ? '✓' : '…'}</span></div>`).join('')}</div><div class="mock-submit">${complete ? '✓ Cart ready — review anytime' : 'Building your cart…'}</div>`;
   }
-  if (scenario === 1) return `<div class="browser-brand"><b style="background:#377cf1">▤</b> ${step < 3 ? 'Canvas · Course documents' : 'Google Docs · Saved to Drive'}</div><h4>Every deadline. One place.</h4><p class="browser-subtitle">Fall semester · ${complete ? '31 of 31' : executing ? '18 of 31' : 'Collecting'} due dates</p><div class="doc-line"><b>Oct 16</b><span>CSE 310 · Graph algorithms</span></div><div class="doc-line ${executing ? '' : 'dim'}"><b>Oct 19</b><span>MAT 343 · Problem set 6</span></div><div class="doc-line ${executing ? '' : 'dim'}"><b>Oct 23</b><span>ENG 302 · Research draft</span></div><div class="mock-submit">${complete ? '✓ All deadlines organized' : executing ? 'Writing your document…' : 'Reading your syllabi…'}</div>`;
+  if (scenario === 1) return `<div class="browser-brand"><b class="airtable-mark">▦</b> Airtable · Partnerships</div><h4>Your deals, in sync.</h4><p class="browser-subtitle">${complete ? '2 of 2 records updated' : 'Matching signed agreements'}</p><div class="airtable-grid"><div class="airtable-row table-head"><span>Partnership</span><span>Status</span></div><div class="airtable-row"><span>YouTube brand deal</span><span class="deal-status ${executing ? 'signed' : ''}">${executing ? 'Signed' : 'Review'}</span></div><div class="airtable-row"><span>X partnership</span><span class="deal-status ${complete ? 'signed' : ''}">${complete ? 'Signed' : 'Updating'}</span></div></div><p class="success-copy">${complete ? 'Next deliverables added. Reminders set.' : 'Checking agreement details and next deliverables.'}</p><div class="mock-submit">${complete ? '✓ Your tracker is up to date' : 'Updating your records…'}</div>`;
   return `<div class="browser-brand"><b style="background:#d3424a">▶</b> YouTube Studio</div><p class="browser-subtitle">YOUR LATEST UPLOAD · VIEWS</p><div class="milestone-number">${complete ? '10,024' : executing ? '9,800' : '9,642'}</div><div class="chart" aria-hidden="true">${[17, 24, 21, 34, 42, 38, 52, 57, 67, 80, 91, 100].map(h => `<i style="--bar:${h}%"></i>`).join('')}</div><p class="browser-subtitle">${complete ? '↗ 10K milestone reached' : 'Watching for 10,000 views'}</p>`;
 }
 
@@ -152,43 +147,42 @@ $('#hear-demo').addEventListener('click', () => {
 
 const features = [
   {
-    title: 'A conversation.<br> Not a command line.',
-    description: 'You talk, it talks back. Carry on with your day while November works — and speaks up when something worth knowing happens.',
-    bullets: ['Hands-free, in both directions', 'Talks back while it works', 'Speaks up when things happen'],
-    visual: `<div class="chat-you"><div class="chat-label">YOU</div>“Hey November, anything new?”</div><div class="chat-november"><img src="assets/november-mascot.png" alt=""><div class="chat-message"><div class="speech-heading"><span class="waveform" aria-hidden="true"></span><span class="mono">NOVEMBER · SPEAKING</span></div>“Your video just passed 10,000 views. And that brand deal? It’s signed.”</div></div><div class="proactive-alert"><div class="proactive-label mono">SPEAKS FIRST. WATCHING FOR YOU.</div><div class="alert-line"><span class="alert-icon">𝕏</span><span>Your post just crossed 1,000 likes.</span><time>JUST NOW</time></div><div class="alert-line"><span class="alert-icon">↗</span><span>Saturday’s tickets dropped below $150.</span><time>2 MIN AGO</time></div></div>`,
-  },
-  {
-    title: 'Your words.<br> A working plan.',
-    description: 'Say it the way you normally would. November picks out what matters, turns it into steps, and follows through.',
-    bullets: ['Natural language, down to the details', 'One request across multiple sites', 'A running conversation as it executes'],
-    visual: `<div class="chat-label">ONE SENTENCE → FOUR STEPS</div><div class="sentence-parts"><div>“Book a study room<span>TASK</span></div><div>at Hayden<span>WHERE</span></div><div>tomorrow at 3<span>WHEN</span></div><div>for two hours.”<span>DURATION</span></div></div><div class="feature-plan"><div><b>✓</b> Open the library’s booking page</div><div><b>✓</b> Filter: Hayden · 3–5 PM</div><div><b>✓</b> Find a quiet room</div><div class="working"><span class="waveform" aria-hidden="true"></span> “Room 412 is open. Booking it now.”</div></div>`,
+    title: 'Just ask.<br> It gets moving.',
+    description: 'Hands-free conversation and voice execution, together. Say what you need, make changes as you go, and hear November talk you through the work.',
+    bullets: ['Your words become a working plan', 'Listens and talks back while it acts', 'Takes corrections without starting over'],
+    visual: `<div class="chat-you"><div class="chat-label">YOU</div>“Add my usual groceries to Walmart. Make the milk oat this time.”</div><div class="chat-november"><img src="assets/november-mascot.png" alt=""><div class="chat-message"><div class="speech-heading"><span class="waveform" aria-hidden="true"></span><span class="mono">NOVEMBER · WORKING & SPEAKING</span></div>“Oat milk it is. Coffee’s in your cart — finding your usual bread now.”</div></div><div class="feature-plan merged-plan"><div><b>✓</b> Find your preferred brands</div><div><b>✓</b> Swap dairy milk for oat</div><div class="working"><span class="waveform" aria-hidden="true"></span> Add the rest to your cart</div></div>`,
   },
   {
     title: 'The whole browser.<br> Without the tab juggling.',
     description: 'A real browser in the cloud. November signs in, reads, clicks, types, and moves between sites. Your laptop can sleep.',
-    bullets: ['Works across the sites you already use', 'Reads documents and fills forms', 'Keeps going in the cloud'],
-    visual: `<div class="log-window"><div class="log-title"><span>◉ CHROMIUM / CLOUD SESSION</span><span>US-WEST</span></div><div class="log-row"><span>00:04</span><b>sign in</b><em>canvas.asu.edu · ••••••••</em></div><div class="log-row"><span>00:11</span><b>read</b><em>CSE 310 › Syllabus.pdf</em></div><div class="log-row"><span>00:26</span><b>extract</b><em>3 syllabi · 31 due dates</em></div><div class="log-row"><span>00:33</span><b>open</b><em>docs.google.com · new doc</em></div><div class="log-row current"><span>00:42</span><b>write</b><em>Sorted by date · 18 of 31</em></div></div><div class="cloud-footnote mono"><span>YOUR LAPTOP: ASLEEP</span><span>NOVEMBER: WORKING ↗</span></div>`,
+    bullets: ['Works across the sites you already use', 'Updates records and fills forms', 'Keeps going in the cloud'],
+    visual: `<div class="log-window"><div class="log-title"><span>◉ CHROMIUM / CLOUD SESSION</span><span>US-WEST</span></div><div class="log-row"><span>00:04</span><b>open</b><em>Airtable · Partnerships</em></div><div class="log-row"><span>00:11</span><b>read</b><em>2 signed brand agreements</em></div><div class="log-row"><span>00:26</span><b>match</b><em>YouTube + X partnerships</em></div><div class="log-row"><span>00:33</span><b>update</b><em>YouTube deal → Signed</em></div><div class="log-row current"><span>00:42</span><b>write</b><em>X deal · next deliverables</em></div></div><div class="cloud-footnote mono"><span>YOUR LAPTOP: ASLEEP</span><span>NOVEMBER: WORKING ↗</span></div>`,
   },
   {
     title: 'Picks up where<br> you left off.',
     description: 'An ongoing conversation, with local, stateful memory. November remembers your preferences and takes corrections in stride.',
     bullets: ['Remembers the details that matter', 'Takes a change of plan mid-task', 'Context stays with you, locally'],
-    visual: `<div class="chat-you"><div class="chat-label">YOU · MID-TASK</div>“Actually, make it 4 to 6. Somewhere quiet.”</div><div class="chat-november"><img src="assets/november-mascot.png" alt=""><div class="chat-message"><div class="speech-heading"><span class="waveform" aria-hidden="true"></span><span class="mono">NOVEMBER</span></div>“Four to six at Hayden. Quiet floor, like last time.”</div></div><div class="memory-box"><div class="mono"><span>YOUR MEMORY</span><span>ON DEVICE ↗</span></div><div class="memory-pairs"><span>library</span><b>Hayden</b><span>preference</span><b>Quiet floors</b><span>study time</span><b>Afternoons</b></div></div>`,
+    visual: `<div class="chat-you"><div class="chat-label">YOU · MID-TASK</div>“Actually, oat milk from now on. Same coffee as last time.”</div><div class="chat-november"><img src="assets/november-mascot.png" alt=""><div class="chat-message"><div class="speech-heading"><span class="waveform" aria-hidden="true"></span><span class="mono">NOVEMBER</span></div>“Oat milk, remembered. Your usual medium roast is already in the cart.”</div></div><div class="memory-box"><div class="mono"><span>YOUR MEMORY</span><span>ON DEVICE ↗</span></div><div class="memory-pairs"><span>milk</span><b>Oat</b><span>coffee</span><b>Medium roast</b><span>bread</span><b>Wholegrain</b></div></div>`,
   },
   {
-    title: 'In the loop.<br> Out of the browser.',
-    description: 'It narrates as it works. Ask “how’s it going?” anytime, or come back to a result when you’re ready.',
-    bullets: ['Spoken updates during execution', 'Follow along on your devices', 'Results you can revisit and replay'],
-    visual: `<div class="progress-card"><div><span>WORKING · SPEAKING</span><span>02 / 03</span></div><h4>Renewing your library books</h4><div class="progress-meter"><span></span></div><div class="speech-heading"><span class="waveform" aria-hidden="true"></span>“Two done. About a minute left.”</div></div><div class="history-item"><div>Registered for Fall Career Fair<span>WED, OCT 21 · 10 AM</span></div><button data-replay="0">▷ REPLAY</button></div><div class="history-item"><div>31 due dates → one document<span>SAVED TO YOUR DRIVE</span></div><button data-replay="1">▷ REPLAY</button></div><p id="replay-status" class="replay-status" role="status"></p>`,
+    title: 'The update you<br> were waiting for.',
+    description: 'Hear what’s happening while November works — and when something changes. A brand deal signed. A video passing 10K. No dashboard refresh required.',
+    bullets: ['Live progress on your brand deals', 'Speaks up at the milestones you set', 'Revisit and replay the results'],
+    visual: `<div class="progress-card"><div><span>UPDATING AIRTABLE · SPEAKING</span><span>01 / 02</span></div><h4>Your brand deals are moving.</h4><div class="progress-meter"><span></span></div><div class="speech-heading"><span class="waveform" aria-hidden="true"></span>“YouTube deal marked signed. Updating the X partnership next.”</div></div><div class="history-item"><div>YouTube brand deal signed<span>AGREEMENT CONFIRMED · TRACKER UPDATED</span></div><button data-replay="deal">▷ REPLAY</button></div><div class="history-item"><div>Your video just passed 10,000 views<span>YOUTUBE · MILESTONE REACHED</span></div><button data-replay="views">▷ REPLAY</button></div><div class="history-item"><div>X partnership signed<span>NEXT DELIVERABLES ADDED TO AIRTABLE</span></div><button data-replay="partnership">▷ REPLAY</button></div><p id="replay-status" class="replay-status" role="status"></p>`,
   },
 ];
+const replayMessages = {
+  deal: '“Your YouTube brand deal is signed. I’ve updated the status in Airtable.”',
+  views: '“Your video just passed ten thousand views.”',
+  partnership: '“Your X partnership is signed too. The next deliverables are in your tracker.”',
+};
 
 function renderFeature(index) {
   feature = index;
   const item = features[index];
   $('#feature-title').innerHTML = item.title;
   $('#feature-description').textContent = item.description;
-  $('#feature-number').textContent = `0${index + 1} / 05`;
+  $('#feature-number').textContent = `0${index + 1} / 0${features.length}`;
   $('#feature-bullets').innerHTML = item.bullets.map(text => `<li>${text}</li>`).join('');
   $('#feature-visual').innerHTML = item.visual;
   $('#feature-panel').setAttribute('aria-labelledby', `feature-${index}`);
@@ -218,7 +212,7 @@ keyboardTabs('[data-feature]', renderFeature);
 $('#feature-visual').addEventListener('click', event => {
   const button = event.target.closest('[data-replay]');
   if (!button) return;
-  const text = examples[Number(button.dataset.replay)].speech[4];
+  const text = replayMessages[button.dataset.replay];
   const status = $('#replay-status');
   status.textContent = text;
   isPlaying = false;
@@ -232,7 +226,7 @@ $$('[data-hardware]').forEach(button => button.addEventListener('click', () => {
   $$('[data-hardware]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
   $('.device-scene').dataset.mode = mode;
   $('.device-scene').setAttribute('aria-label', `Concept illustration of the NovemberAI ${mode === 'desk' ? 'desk stand' : 'pendant'}`);
-  $('#hardware-form').textContent = mode === 'desk' ? 'Desk-side dock' : 'Wearable pendant';
+  $('#hardware-form').textContent = mode === 'desk' ? 'Desktop droplet' : 'Droplet pendant';
   $('#setup-number').textContent = mode === 'desk' ? '02' : '01';
   $('#device-caption').textContent = mode === 'desk' ? 'ON YOUR DESK. ALWAYS WITHIN REACH.' : 'CLIPS ON. GOES EVERYWHERE.';
 }));
