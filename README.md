@@ -21,9 +21,9 @@ The static build is in `dist/`. Source files are in `public/`; the small develop
 
 ## Included
 
-- Three interactive voice → plan → browser examples, a six-stage timeline, autoplay/pause, and opt-in spoken responses.
-- Five capability mockups, local-memory visualization, proactive web alerts, and replay controls.
-- Pendant/desk-stand concept toggle, platform SDKs, roadmap, and waitlist UI.
+- Walmart cart, Airtable brand-deal, and YouTube milestone demos with a six-stage timeline, autoplay/pause, and opt-in spoken responses.
+- Four capability mockups: hands-free execution, full browser, memory, and progress/alerts with replay controls.
+- Connected droplet pendant and larger desk-droplet concept toggle, platform SDKs, roadmap, and waitlist UI.
 - Original mascot, self-hosted fonts, responsive layouts, keyboard tabs, and reduced-motion support.
 
 The demos do not execute browser tasks. The waitlist does not store or transmit emails. Hardware visuals are concepts, and roadmap dates are retained from the design references. Configure real signup handling and confirm launch details before production use.
