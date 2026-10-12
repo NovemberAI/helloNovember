@@ -3,43 +3,59 @@ const $$ = (selector) => [...document.querySelectorAll(selector)];
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const wave = () => Array.from({ length: 9 }, (_, i) => `<i style="--height:${[6, 11, 16, 9, 18, 13, 7, 14, 8][i]}px;--delay:${-i * .13}s"></i>`).join('');
 const renderWaves = () => $$('.waveform').forEach(el => { el.innerHTML = wave(); });
-const steps = ['Ready to listen', 'Listening', 'Making a plan', 'Working · speaking', 'Reporting back', 'Done'];
 const examples = [
   {
-    prompt: '“Add my usual groceries to my Walmart cart.”',
-    plans: ['Open your Walmart account', 'Recall your usual groceries', 'Find your preferred brands', 'Add everything to your cart', 'Read back what’s ready'],
-    memory: 'Oat milk · Wholegrain · Your usual brands',
-    urls: ['about:blank', 'about:blank', 'walmart.com', 'walmart.com/cart', 'walmart.com/cart', 'walmart.com/cart'],
-    speech: ['“Hey. What can I do for you?”', '“Your usual groceries. Got it.”', '“I’ll find your usual brands and build your cart.”', '“Oat milk and coffee are in. Finding your usual bread.”', '“Your cart is ready: oat milk, coffee, bread, and blueberries.”', '“Everything’s in your cart, ready when you are.”'],
-    activities: ['Waiting for your voice', 'Understanding your request', 'Finding your preferred brands', 'Adding your usual groceries…', '4 items ready in your cart', 'Cart saved · ready to review'],
+    url: 'walmart.com/cart',
+    activity: 'Adding your usual groceries',
+    result: '4 items ready in your cart',
+    turns: [
+      ['you', 'Hey November, add my usual groceries to my Walmart cart.'],
+      ['november', 'Of course. Your usual milk, medium-roast coffee, wholegrain bread, and blueberries?'],
+      ['you', 'Yes, but make the milk oat. Remember that for next time, too.'],
+      ['november', 'Oat milk from now on. I’ve got your coffee — adding the rest while we talk.'],
+      ['you', 'Perfect. Just leave the cart ready for me.'],
+      ['november', 'All four are in your cart. Oat milk remembered, and everything’s ready for you to review.'],
+    ],
   },
   {
-    prompt: '“Update Airtable with the brand deals that just signed.”',
-    plans: ['Open your brand deals base', 'Find the signed agreements', 'Match them to your records', 'Update status and next steps', 'Report what changed'],
-    memory: 'Creator partnerships · Your deal tracker',
-    urls: ['about:blank', 'about:blank', 'airtable.com', 'airtable.com/partnerships', 'airtable.com/partnerships', 'airtable.com/partnerships'],
-    speech: ['“Hey. What are we working on?”', '“Your signed brand deals. I’m on it.”', '“I’ll match the agreements to your partnership records.”', '“The YouTube deal is marked signed. Updating the X partnership next.”', '“Both deals are marked signed, with the next deliverables added.”', '“Your Airtable is up to date. I’ll remind you before the deliverables are due.”'],
-    activities: ['Waiting for your voice', 'Understanding your request', 'Matching signed agreements', 'Updating 1 of 2 deal records…', '2 deals updated · next steps added', 'Partnership tracker is up to date'],
+    url: 'airtable.com/partnerships',
+    activity: 'Updating your signed partnerships',
+    result: '2 deals updated · reminders set',
+    turns: [
+      ['you', 'November, update Airtable with the brand deals that just signed.'],
+      ['november', 'I found your YouTube deal and the X partnership. Shall I add the next deliverables too?'],
+      ['you', 'Yes. And remind me a day before each one is due.'],
+      ['november', 'YouTube is marked signed. I’m updating the X deal and adding the deliverables now.'],
+      ['you', 'Keep them in my usual partnership tracker.'],
+      ['november', 'Done. Both records are updated in your tracker, with a reminder a day before each deadline.'],
+    ],
   },
   {
-    prompt: '“Tell me when my new video hits ten thousand views.”',
-    plans: ['Open YouTube Studio', 'Find your latest video', 'Read the current view count', 'Watch for the milestone', 'Tell you when it happens'],
-    memory: 'Latest upload · Milestone: 10K views',
-    urls: ['about:blank', 'about:blank', 'studio.youtube.com', 'studio.youtube.com', 'studio.youtube.com', 'studio.youtube.com'],
-    speech: ['“Hey. I’m here.”', '“Ten thousand views. I’m on it.”', '“I’ll find your latest upload and keep an eye on it.”', '“You’re at nine thousand eight hundred. I’ll let you know.”', '“Your video just passed ten thousand views.”', '“A milestone worth stepping away from your screen for.”'],
-    activities: ['Waiting for your voice', 'Understanding your request', 'Opening YouTube Studio', 'Watching for your milestone…', '10,024 views · milestone reached', 'Spoken update delivered'],
+    url: 'studio.youtube.com',
+    activity: 'Watching for your 10K milestone',
+    result: '10,024 views · spoken update delivered',
+    turns: [
+      ['you', 'Tell me when my new video hits ten thousand views.'],
+      ['november', 'Your latest upload is at 9,800. I can keep an eye on it while you get on with your day.'],
+      ['you', 'Great. Just tell me when it crosses ten thousand.'],
+      ['november', 'You’ve got it. I’ll speak up when it happens.'],
+      ['you', 'Thanks, I’m stepping away from my laptop.'],
+      ['november', 'Quick update — your video just passed 10,000 views! It’s at 10,024. A milestone worth hearing about.'],
+    ],
   },
 ];
 let scenario = 0;
-let step = 3;
-let isPlaying = !reduceMotion.matches;
+let step = 0;
+let isPlaying = false;
 let timer;
+let audioRun = 0;
+let audioPlaying = false;
 let speechUtterance;
 let feature = 0;
 
 function browserMarkup() {
-  const executing = step >= 3;
-  const complete = step >= 4;
+  const executing = step >= 4;
+  const complete = step >= 6;
   if (scenario === 0) {
     return `<div class="browser-brand"><b class="walmart-mark">✳</b> Walmart · Your cart</div><h4>${complete ? 'Your usuals, ready.' : 'A little less to do.'}</h4><p class="browser-subtitle">${complete ? '4 items · ready to review' : 'Adding your preferred brands'}</p><div class="cart-items">${[['🥛', 'Oat milk', 'Your usual brand'], ['☕', 'Ground coffee', 'Medium roast'], ['🍞', 'Wholegrain bread', 'Your usual loaf'], ['🫐', 'Blueberries', 'Fresh · 1 pack']].map(([icon, name, detail], i) => `<div class="cart-item ${!complete && (!executing || i > 1) ? 'cart-pending' : ''}"><span class="cart-thumb" aria-hidden="true">${icon}</span><span><b>${name}</b><small>${detail}</small></span><span class="cart-state">${complete || executing && i < 2 ? '✓' : '…'}</span></div>`).join('')}</div><div class="mock-submit">${complete ? '✓ Cart ready — review anytime' : 'Building your cart…'}</div>`;
   }
@@ -49,45 +65,56 @@ function browserMarkup() {
 
 function renderDemo() {
   const example = examples[scenario];
-  const done = [0, 0, 0, 2, 5, 5][step];
-  $('#user-prompt').textContent = step === 0 ? '“Hey November.”' : example.prompt;
-  $('#voice-state').textContent = steps[step].toUpperCase();
-  $('#spoken-response').textContent = example.speech[step];
-  $('#memory-context').textContent = example.memory;
-  $('#browser-url').textContent = example.urls[step];
-  $('#browser-activity').textContent = example.activities[step];
+  $('#conversation-welcome').hidden = step > 0;
+  const transcript = $('#conversation-transcript');
+  while (transcript.children.length < step) {
+    const index = transcript.children.length;
+    const [speaker, text] = example.turns[index];
+    const turn = document.createElement('div');
+    turn.className = `conversation-turn turn-${speaker}`;
+    turn.innerHTML = `<div class="turn-meta"><span class="mono">${speaker === 'you' ? 'YOU' : 'NOVEMBER'}</span><span class="waveform" aria-hidden="true">${wave()}</span><span class="turn-speaking mono">SPEAKING</span></div><p></p>`;
+    turn.querySelector('p').textContent = text;
+    transcript.append(turn);
+  }
+  [...transcript.children].forEach((turn, i) => { turn.dataset.active = String(isPlaying && i === step - 1); });
+  $('#voice-state').textContent = !step ? 'READY TO LISTEN' : step === 6 && !isPlaying ? 'ALL TAKEN CARE OF' : isPlaying ? (example.turns[step - 1][0] === 'you' ? 'LISTENING TO YOU' : 'WORKING · SPEAKING') : 'PAUSED';
+  $('#conversation-action').hidden = step < 4;
+  $('#browser-url').textContent = example.url;
+  $('#browser-activity').textContent = step === 6 ? example.result : example.activity;
   $('#browser-content').innerHTML = browserMarkup();
-  $('#plan-counter').textContent = `${step >= 4 ? 5 : done} OF 5`;
-  $('#plan-list').innerHTML = example.plans.map((plan, index) => {
-    const state = index < done ? 'complete' : index === done && step >= 2 ? 'active' : '';
-    return `<li class="${state}"><span class="step-icon" aria-hidden="true">${state === 'complete' ? '✓' : state === 'active' ? '•' : String(index + 1).padStart(2, '0')}</span>${plan}</li>`;
-  }).join('');
-  $$('.timeline-steps button').forEach((button, index) => {
-    if (index === step) button.setAttribute('aria-current', 'step');
-    else button.removeAttribute('aria-current');
-  });
-  $('.execution-demo').dataset.speaking = String([1, 3, 4].includes(step));
-  $('.execution-demo').dataset.paused = String(!isPlaying);
-  $('#play-toggle').innerHTML = isPlaying ? 'Ⅱ <span>Pause</span>' : '▷ <span>Play</span>';
-  $('#play-toggle').setAttribute('aria-label', isPlaying ? 'Pause demo' : 'Play demo');
-  $('#hear-demo').setAttribute('aria-label', 'Hear November’s response');
+  $('#conversation-status').textContent = !step ? 'CHOOSE AN EXAMPLE TO BEGIN' : step === 6 ? 'CONVERSATION COMPLETE' : `VOICE TRANSCRIPT · ${step} / 6`;
+  $('#play-toggle').disabled = !step;
+  $('#play-toggle').textContent = !step ? '▷ Play' : isPlaying ? 'Ⅱ Pause' : step === 6 ? '↻ Replay' : '▷ Continue';
+  $('#show-conversation').disabled = !step || step === 6;
+  $('#hear-demo').disabled = !step;
+  $('.execution-demo').dataset.paused = String(!isPlaying && !audioPlaying);
+  $('.execution-demo').dataset.speaking = String(isPlaying || audioPlaying);
 }
 
 function schedule() {
   clearTimeout(timer);
   if (!isPlaying || document.hidden) return;
   timer = setTimeout(() => {
-    step = (step + 1) % 6;
-    if (step === 0) setScenario((scenario + 1) % examples.length, false);
+    if (step === 6) { isPlaying = false; renderDemo(); return; }
+    step += 1;
     renderDemo();
+    const newest = $('#conversation-transcript').lastElementChild;
+    // Only the transcript scrolls; the workspace and scenario choices stay in place.
+    const viewport = $('#conversation-scroll');
+    if (newest) viewport.scrollTo({ top: newest.offsetTop - viewport.offsetTop - 20, behavior: reduceMotion.matches ? 'instant' : 'smooth' });
     schedule();
-  }, step === 3 ? 6500 : step === 4 || step === 5 ? 4400 : 2500);
+  }, step === 6 ? 6500 : step === 4 ? 5000 : 3800);
 }
 
 function stopSpeech() {
+  audioRun += 1;
+  audioPlaying = false;
   if ('speechSynthesis' in window) speechSynthesis.cancel();
   speechUtterance = undefined;
-  $('#hear-demo').setAttribute('aria-label', 'Hear November’s response');
+  $('#hear-demo').setAttribute('aria-label', 'Hear the conversation');
+  $('#hear-demo').innerHTML = '◖)) <span>Hear conversation</span>';
+  $$('.conversation-turn').forEach(turn => { turn.dataset.active = 'false'; });
+  $('.execution-demo').dataset.paused = String(!isPlaying);
 }
 
 function pauseDemo() {
@@ -96,24 +123,30 @@ function pauseDemo() {
   stopSpeech();
 }
 
-function setScenario(index, manual = true) {
-  if (manual) { pauseDemo(); step = 3; }
+function setScenario(index) {
+  pauseDemo();
   scenario = index;
-  $$('[data-scenario]').forEach((button, i) => {
-    button.setAttribute('aria-selected', String(index === i));
-    button.tabIndex = index === i ? 0 : -1;
-  });
-  $('#scenario-panel').setAttribute('aria-labelledby', `scenario-${index}`);
+  step = reduceMotion.matches ? 6 : 1;
+  isPlaying = !reduceMotion.matches;
+  $('#conversation-transcript').replaceChildren();
+  $('#conversation-scroll').scrollTop = 0;
+  $$('[data-scenario]').forEach((button, i) => button.setAttribute('aria-pressed', String(index === i)));
   renderDemo();
+  schedule();
 }
 
 $$('[data-scenario]').forEach(button => button.addEventListener('click', () => setScenario(Number(button.dataset.scenario))));
-$$('[data-step]').forEach(button => button.addEventListener('click', () => { pauseDemo(); step = Number(button.dataset.step); renderDemo(); }));
 $('#play-toggle').addEventListener('click', () => {
+  if (step === 6 && !isPlaying) { setScenario(scenario); return; }
   stopSpeech();
   isPlaying = !isPlaying;
   renderDemo();
   schedule();
+});
+$('#show-conversation').addEventListener('click', () => {
+  pauseDemo();
+  step = 6;
+  renderDemo();
 });
 
 function speak(text, onEnd) {
@@ -129,20 +162,37 @@ function speak(text, onEnd) {
 }
 
 $('#hear-demo').addEventListener('click', () => {
-  if ('speechSynthesis' in window && speechSynthesis.speaking) { stopSpeech(); return; }
-  isPlaying = false;
-  clearTimeout(timer);
+  if (audioPlaying) { stopSpeech(); renderDemo(); return; }
+  pauseDemo();
+  step = 6;
   renderDemo();
-  if (speak(examples[scenario].speech[step], () => {
-    $('.execution-demo').dataset.paused = 'true';
-    $('#hear-demo').setAttribute('aria-label', 'Hear November’s response');
-  })) {
+  if (!('speechSynthesis' in window)) {
+    $('#conversation-status').textContent = 'AUDIO UNAVAILABLE · READ THE TRANSCRIPT ABOVE';
+    return;
+  }
+  const run = audioRun;
+  audioPlaying = true;
+  $('#hear-demo').setAttribute('aria-label', 'Stop conversation audio');
+  $('#hear-demo').innerHTML = '■ <span>Stop audio</span>';
+  const playTurn = index => {
+    if (run !== audioRun) return;
+    if (index === 6) { stopSpeech(); renderDemo(); return; }
+    const [speaker, text] = examples[scenario].turns[index];
+    $$('.conversation-turn').forEach((turn, i) => { turn.dataset.active = String(i === index); });
     $('.execution-demo').dataset.paused = 'false';
     $('.execution-demo').dataset.speaking = 'true';
-    $('#hear-demo').setAttribute('aria-label', 'Stop spoken response');
-  } else {
-    $('#hear-demo').title = 'Audio playback is unavailable in this browser. Read the response below.';
-  }
+    $('#voice-state').textContent = speaker === 'you' ? 'YOU · SPEAKING' : 'NOVEMBER · SPEAKING';
+    const viewport = $('#conversation-scroll');
+    viewport.scrollTo({ top: $('#conversation-transcript').children[index].offsetTop - viewport.offsetTop - 20, behavior: reduceMotion.matches ? 'instant' : 'smooth' });
+    speechUtterance = new SpeechSynthesisUtterance(text);
+    speechUtterance.lang = 'en-US';
+    speechUtterance.rate = speaker === 'you' ? 1 : .96;
+    speechUtterance.pitch = speaker === 'you' ? 1.1 : .9;
+    speechUtterance.onend = () => playTurn(index + 1);
+    speechUtterance.onerror = () => { if (run === audioRun) { stopSpeech(); renderDemo(); $('#conversation-status').textContent = 'AUDIO UNAVAILABLE · READ THE TRANSCRIPT ABOVE'; } };
+    speechSynthesis.speak(speechUtterance);
+  };
+  playTurn(0);
 });
 
 const features = [
@@ -206,7 +256,7 @@ function keyboardTabs(selector, select) {
     buttons[index].focus();
   }));
 }
-keyboardTabs('[data-scenario]', setScenario);
+
 keyboardTabs('[data-feature]', renderFeature);
 
 $('#feature-visual').addEventListener('click', event => {
@@ -215,8 +265,7 @@ $('#feature-visual').addEventListener('click', event => {
   const text = replayMessages[button.dataset.replay];
   const status = $('#replay-status');
   status.textContent = text;
-  isPlaying = false;
-  clearTimeout(timer);
+  pauseDemo();
   renderDemo();
   speak(text, () => {});
 });

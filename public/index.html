@@ -22,30 +22,32 @@
   <main id="main">
     <section id="top" class="hero wrap grid-paper" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <a href="#roadmap" class="beta-label mono"><span class="status-dot"></span> PRIVATE BETA · JAN 2027 <span aria-hidden="true">↗</span></a>
         <h1 id="hero-title">Just Talk to it,<br> <span class="blue">November</span> Handles the rest</h1>
         <p>A voice that works WITH you. It clicks, browses, and acts without you staring at a screen.<br class="desktop-break"> Talking you through every step. Remembering and reminding you what makes you, you.</p>
         <div class="hero-actions"><a class="button primary" href="#join">Join the waitlist <span aria-hidden="true">↗</span></a><a class="text-link" href="#demo">See it in action <span aria-hidden="true">↓</span></a></div>
         <div class="hero-footnote mono">HANDS FREE. VOICE BOTH WAYS. A REAL BROWSER.</div>
       </div>
       <div id="demo" class="execution-demo" aria-label="Interactive NovemberAI demonstration">
-        <div class="demo-toolbar"><div class="mono"><span class="status-dot"></span> NOVEMBER / IN MOTION <span class="demo-note">INTERACTIVE DEMO</span></div><button class="icon-button mono" id="play-toggle" aria-label="Pause demo">Ⅱ <span>Pause</span></button></div>
-        <div class="scenario-tabs" role="tablist" aria-label="Example task">
-          <button role="tab" id="scenario-0" aria-controls="scenario-panel" aria-selected="true" data-scenario="0">01 <span>Fill your Walmart cart</span><span aria-hidden="true">↗</span></button>
-          <button role="tab" id="scenario-1" aria-controls="scenario-panel" aria-selected="false" tabindex="-1" data-scenario="1">02 <span>Update your Airtable</span><span aria-hidden="true">↗</span></button>
-          <button role="tab" id="scenario-2" aria-controls="scenario-panel" aria-selected="false" tabindex="-1" data-scenario="2">03 <span>Catch a 10K milestone</span><span aria-hidden="true">↗</span></button>
-        </div>
-        <div class="execution-panels" id="scenario-panel" role="tabpanel" aria-labelledby="scenario-0">
-          <div class="voice-panel">
-            <div class="panel-heading mono"><span>01 / VOICE</span><span class="live-state" id="voice-state">WORKING · SPEAKING</span></div>
-            <div class="orb-zone"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="voice-orb"><img src="assets/november-mascot.png" alt="NovemberAI mascot" width="64" height="64"></div><span class="orb-point point-one"></span><span class="orb-point point-two"></span></div>
-            <p class="user-prompt" id="user-prompt">“Add my usual groceries to my Walmart cart.”</p>
-            <div class="speech-response"><div class="speech-heading"><span class="waveform" aria-hidden="true"></span><span class="mono">NOVEMBER SAYS</span><button id="hear-demo" class="audio-button" aria-label="Hear November’s response" title="Hear November’s response">◖))</button></div><p id="spoken-response">“Oat milk and coffee are in. Finding your usual bread.”</p></div>
+        <div class="demo-toolbar"><div class="mono"><span class="status-dot"></span> NOVEMBER / IN CONVERSATION</div><span class="demo-note mono">INTERACTIVE DEMO</span></div>
+        <div class="conversation-layout">
+          <div class="conversation-workspace" id="scenario-panel" role="region" aria-label="Spoken conversation and actions">
+            <div class="conversation-heading"><span><img src="assets/november-mascot.png" alt="" width="32" height="32"> November<span class="blue">AI</span></span><span class="mono" id="voice-state">READY TO LISTEN</span></div>
+            <div class="conversation-scroll" id="conversation-scroll" tabindex="0" aria-label="Conversation transcript">
+              <div class="conversation-welcome" id="conversation-welcome"><div class="voice-orb"><img src="assets/november-mascot.png" alt="NovemberAI mascot" width="64" height="64"></div><h3>What can I take<br> off your hands?</h3><p>Pick a conversation. Hear each other out.<br> Watch November get it done.</p><span class="mono">YOUR VOICE. A LITTLE BACK-AND-FORTH.</span></div>
+              <div id="conversation-transcript" role="log" aria-label="Voice transcript" aria-live="polite" aria-relevant="additions"></div>
+              <div class="conversation-action" id="conversation-action" hidden><div class="action-caption mono"><span class="activity-pulse"></span><span id="browser-activity"></span><span>CLOUD ↗</span></div><div class="mini-browser"><div class="browser-chrome"><span class="traffic-lights" aria-hidden="true">● ● ●</span><span id="browser-url"></span></div><div id="browser-content" class="browser-content"></div></div></div>
+            </div>
+            <div class="conversation-footer"><span class="mono" id="conversation-status">CHOOSE AN EXAMPLE TO BEGIN</span><button id="hear-demo" class="conversation-audio" disabled aria-label="Hear the conversation">◖)) <span>Hear conversation</span></button></div>
           </div>
-          <div class="plan-panel"><div class="panel-heading mono"><span>02 / PLAN</span><span id="plan-counter">3 OF 5</span></div><h3>One sentence.<br> A plan in motion.</h3><ol id="plan-list" class="plan-list"></ol><div class="plan-memory mono"><span aria-hidden="true">⌘</span><span>CONTEXT FROM YOUR MEMORY<br> <b id="memory-context">Oat milk · Wholegrain · Your usual brands</b></span></div></div>
-          <div class="browser-panel"><div class="panel-heading mono"><span>03 / BROWSER</span><span class="cloud-label">CLOUD ↗</span></div><div class="mini-browser"><div class="browser-chrome"><span class="traffic-lights" aria-hidden="true">● ● ●</span><span id="browser-url">walmart.com/cart</span><span aria-hidden="true">⟳</span></div><div id="browser-content" class="browser-content"></div></div><div class="browser-activity mono"><span class="activity-pulse"></span><span id="browser-activity">Adding your usual groceries…</span></div></div>
+          <aside class="conversation-choices" aria-label="Demo scenarios"><span class="mono">TRY A CONVERSATION</span><h3>You talk.<br> Things happen.</h3><p>Choose an example to play it through.</p>
+            <div class="conversation-options" role="group" aria-label="Example task">
+              <button id="scenario-0" aria-controls="scenario-panel" aria-pressed="false" data-scenario="0"><span class="mono">01 / EVERYDAY</span><strong>Fill your Walmart cart</strong><small>A quick request. A change of mind.<br> Your usuals, ready.</small><span class="choice-arrow" aria-hidden="true">↗</span></button>
+              <button id="scenario-1" aria-controls="scenario-panel" aria-pressed="false" data-scenario="1"><span class="mono">02 / WORK</span><strong>Update your Airtable</strong><small>Signed deals, next steps,<br> and a reminder to follow up.</small><span class="choice-arrow" aria-hidden="true">↗</span></button>
+              <button id="scenario-2" aria-controls="scenario-panel" aria-pressed="false" data-scenario="2"><span class="mono">03 / PROGRESS</span><strong>Catch a 10K milestone</strong><small>Set a milestone. Step away.<br> November speaks up.</small><span class="choice-arrow" aria-hidden="true">↗</span></button>
+            </div>
+            <div class="conversation-controls"><button id="play-toggle" disabled>▷ Play</button><button id="show-conversation" disabled>Show full conversation <span aria-hidden="true">↗</span></button></div><span class="conversation-disclaimer">Illustrative demo · audio is optional</span>
+          </aside>
         </div>
-        <div class="timeline" aria-label="Demo timeline"><span class="mono timeline-label">SCRUB THROUGH <span aria-hidden="true">→</span></span><div class="timeline-steps"><button data-step="0"><span>01</span> Wake</button><button data-step="1"><span>02</span> Listen</button><button data-step="2"><span>03</span> Plan</button><button data-step="3" aria-current="step"><span>04</span> Execute</button><button data-step="4"><span>05</span> Report</button><button data-step="5"><span>06</span> Done</button></div></div>
       </div>
       <div class="system-spec mono"><div><span>INPUT</span><strong>Your voice</strong></div><div><span>OUTPUT</span><strong>Speech + results</strong></div><div><span>RUNTIME</span><strong>Full cloud browser</strong></div><div><span>MEMORY</span><strong>Local. Stateful. Yours.</strong></div></div>
     </section>
