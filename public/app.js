@@ -281,10 +281,25 @@ $$('[data-hardware]').forEach(button => button.addEventListener('click', () => {
   $('#device-caption').textContent = mode === 'desk' ? 'ON YOUR DESK. ALWAYS WITHIN REACH.' : 'CLIPS ON. GOES EVERYWHERE.';
 }));
 
-$('#waitlist-form').addEventListener('submit', event => {
+$('#waitlist-form').addEventListener('submit', async event => {
   event.preventDefault();
-  if (!event.currentTarget.reportValidity()) return;
-  $('#form-status').textContent = 'Thanks for trying the preview. Your email has not been sent or saved; registration will open when the waitlist is connected.';
+  const form = event.currentTarget;
+  if (!form.reportValidity()) return;
+  const button = form.querySelector('button');
+  const status = $('#form-status');
+  button.disabled = true;
+  status.textContent = 'Joining…';
+  try {
+    const response = await fetch('/api/waitlist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: form.email.value }) });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.error);
+    status.textContent = result.alreadyJoined ? 'You’re already on the waitlist.' : 'You’re on the waitlist. Check your inbox.';
+    form.reset();
+  } catch (error) {
+    status.textContent = error instanceof TypeError || !error.message ? 'Could not join the waitlist. Try again in a moment.' : error.message;
+  } finally {
+    button.disabled = false;
+  }
 });
 
 document.addEventListener('visibilitychange', () => {
