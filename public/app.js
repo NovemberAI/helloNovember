@@ -52,6 +52,7 @@ let audioRun = 0;
 let audioPlaying = false;
 let speechUtterance;
 let feature = 0;
+let demoVisible = false;
 
 function browserMarkup() {
   const executing = step >= 4;
@@ -94,9 +95,10 @@ function renderDemo() {
 
 function schedule() {
   clearTimeout(timer);
-  if (!isPlaying || document.hidden) return;
+  if (!isPlaying || document.hidden || !demoVisible) return;
   timer = setTimeout(() => {
-    if (step === 6) { isPlaying = false; renderDemo(); return; }
+    // Each finished conversation hands off to the next one, looping back to Walmart.
+    if (step === 6) { setScenario((scenario + 1) % examples.length); return; }
     step += 1;
     renderDemo();
     const newest = $('#conversation-transcript').lastElementChild;
@@ -137,6 +139,18 @@ function setScenario(index) {
 }
 
 $$('[data-scenario]').forEach(button => button.addEventListener('click', () => setScenario(Number(button.dataset.scenario))));
+// Pause while the demo is off screen; start it once it's scrolled up past the middle of the viewport.
+new IntersectionObserver(([entry]) => {
+  demoVisible = entry.isIntersecting;
+  if (demoVisible) schedule();
+  else clearTimeout(timer);
+}).observe($('#demo'));
+const demoStart = new IntersectionObserver(([entry]) => {
+  if (!entry.isIntersecting) return;
+  demoStart.disconnect();
+  if (!step) setScenario(0);
+}, { rootMargin: '0px 0px -50% 0px' });
+demoStart.observe($('#demo'));
 $('#play-toggle').addEventListener('click', () => {
   if (step === 6 && !isPlaying) { setScenario(scenario); return; }
   stopSpeech();
