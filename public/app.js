@@ -7,14 +7,14 @@ const examples = [
   {
     url: 'walmart.com/cart',
     activity: 'Adding your usual groceries',
-    result: '4 items ready in your cart',
+    result: '4 items narrated · approved by voice',
     turns: [
       ['you', 'Hey November, add my usual groceries to my Walmart cart.'],
       ['november', 'Of course. Your usual milk, medium-roast coffee, wholegrain bread, and blueberries?'],
       ['you', 'Yes, but make the milk oat. Remember that for next time, too.'],
-      ['november', 'Oat milk from now on. I’ve got your coffee — adding the rest while we talk.'],
-      ['you', 'Perfect. Just leave the cart ready for me.'],
-      ['november', 'All four are in your cart. Oat milk remembered, and everything’s ready for you to review.'],
+      ['november', 'Oat milk remembered. Your cart has oat milk, medium-roast coffee, wholegrain bread, and blueberries. Does that all sound right?'],
+      ['you', 'Yes, that all sounds right. I approve.'],
+      ['november', 'Got it — all four items approved. Your cart is saved, and oat milk is your usual from now on.'],
     ],
   },
   {
@@ -57,7 +57,7 @@ function browserMarkup() {
   const executing = step >= 4;
   const complete = step >= 6;
   if (scenario === 0) {
-    return `<div class="browser-brand"><b class="walmart-mark">✳</b> Walmart · Your cart</div><h4>${complete ? 'Your usuals, ready.' : 'A little less to do.'}</h4><p class="browser-subtitle">${complete ? '4 items · ready to review' : 'Adding your preferred brands'}</p><div class="cart-items">${[['🥛', 'Oat milk', 'Your usual brand'], ['☕', 'Ground coffee', 'Medium roast'], ['🍞', 'Wholegrain bread', 'Your usual loaf'], ['🫐', 'Blueberries', 'Fresh · 1 pack']].map(([icon, name, detail], i) => `<div class="cart-item ${!complete && (!executing || i > 1) ? 'cart-pending' : ''}"><span class="cart-thumb" aria-hidden="true">${icon}</span><span><b>${name}</b><small>${detail}</small></span><span class="cart-state">${complete || executing && i < 2 ? '✓' : '…'}</span></div>`).join('')}</div><div class="mock-submit">${complete ? '✓ Cart ready — review anytime' : 'Building your cart…'}</div>`;
+    return `<div class="browser-brand"><b class="walmart-mark">✳</b> Walmart · Your cart</div><h4>${complete ? 'Your usuals, approved.' : 'A little less to do.'}</h4><p class="browser-subtitle">${complete ? '4 items · approved by voice' : 'Adding your preferred brands'}</p><div class="cart-items">${[['🥛', 'Oat milk', 'Your usual brand'], ['☕', 'Ground coffee', 'Medium roast'], ['🍞', 'Wholegrain bread', 'Your usual loaf'], ['🫐', 'Blueberries', 'Fresh · 1 pack']].map(([icon, name, detail], i) => `<div class="cart-item ${!complete && (!executing || i > 1) ? 'cart-pending' : ''}"><span class="cart-thumb" aria-hidden="true">${icon}</span><span><b>${name}</b><small>${detail}</small></span><span class="cart-state">${complete || executing && i < 2 ? '✓' : '…'}</span></div>`).join('')}</div><div class="mock-submit">${complete ? '✓ Cart approved by voice' : 'Building your cart…'}</div>`;
   }
   if (scenario === 1) return `<div class="browser-brand"><b class="airtable-mark">▦</b> Airtable · Partnerships</div><h4>Your deals, in sync.</h4><p class="browser-subtitle">${complete ? '2 of 2 records updated' : 'Matching signed agreements'}</p><div class="airtable-grid"><div class="airtable-row table-head"><span>Partnership</span><span>Status</span></div><div class="airtable-row"><span>YouTube brand deal</span><span class="deal-status ${executing ? 'signed' : ''}">${executing ? 'Signed' : 'Review'}</span></div><div class="airtable-row"><span>X partnership</span><span class="deal-status ${complete ? 'signed' : ''}">${complete ? 'Signed' : 'Updating'}</span></div></div><p class="success-copy">${complete ? 'Next deliverables added. Reminders set.' : 'Checking agreement details and next deliverables.'}</p><div class="mock-submit">${complete ? '✓ Your tracker is up to date' : 'Updating your records…'}</div>`;
   return `<div class="browser-brand"><b style="background:#d3424a">▶</b> YouTube Studio</div><p class="browser-subtitle">YOUR LATEST UPLOAD · VIEWS</p><div class="milestone-number">${complete ? '10,024' : executing ? '9,800' : '9,642'}</div><div class="chart" aria-hidden="true">${[17, 24, 21, 34, 42, 38, 52, 57, 67, 80, 91, 100].map(h => `<i style="--bar:${h}%"></i>`).join('')}</div><p class="browser-subtitle">${complete ? '↗ 10K milestone reached' : 'Watching for 10,000 views'}</p>`;
