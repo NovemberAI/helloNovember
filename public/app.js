@@ -78,7 +78,8 @@ function renderDemo() {
   }
   [...transcript.children].forEach((turn, i) => { turn.dataset.active = String(isPlaying && i === step - 1); });
   $('#voice-state').textContent = !step ? 'READY TO LISTEN' : step === 6 && !isPlaying ? 'ALL TAKEN CARE OF' : isPlaying ? (example.turns[step - 1][0] === 'you' ? 'LISTENING TO YOU' : 'WORKING · SPEAKING') : 'PAUSED';
-  $('#conversation-action').hidden = step < 4;
+  // Walmart is reviewed by voice, so its cart screen only shows while November builds it.
+  $('#conversation-action').hidden = scenario === 0 ? step < 2 || step >= 4 : step < 4;
   $('#browser-url').textContent = example.url;
   $('#browser-activity').textContent = step === 6 ? example.result : example.activity;
   $('#browser-content').innerHTML = browserMarkup();
