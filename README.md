@@ -21,7 +21,7 @@ The static build is in `dist/`. Source files are in `public/`; the small develop
 
 ## Included
 
-- Walmart cart, Airtable brand-deal, and YouTube milestone demos with a six-stage timeline, autoplay/pause, and opt-in spoken responses.
+- Click-driven Walmart, Airtable, and YouTube conversations with transcripts, speaking waveforms for both participants, inline actions, pause/replay, and opt-in conversation audio.
 - Four capability mockups: hands-free execution, full browser, memory, and progress/alerts with replay controls.
 - Connected droplet pendant and larger desk-droplet concept toggle, platform SDKs, roadmap, and waitlist UI.
 - Original mascot, self-hosted fonts, responsive layouts, keyboard tabs, and reduced-motion support.

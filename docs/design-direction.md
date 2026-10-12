@@ -35,7 +35,7 @@ The immediately preceding typography feedback also aligns with the two selected 
 
 ## Behavior
 
-The main demo has three tasks and six stages. It starts in Execute and advances automatically; manual scenario or timeline selection pauses the loop. Play resumes. Reduced-motion preference disables autoplay and animated graphics. Feature tabs and scenario tabs support keyboard arrows/Home/End. Hardware buttons update the concept illustration and specifications. Layouts adapt down to phone widths.
+The main demo starts idle. Three choices on the right start six-turn spoken conversations, with alternating user and November transcripts, active-speaker waveforms, and inline browser actions inside one workspace. The chosen scenario stops at completion and never cycles to another. Pause/continue, replay, show-full-conversation, and opt-in audio controls are available. Reduced-motion preference shows the complete selected conversation without timed animation. All choices are keyboard buttons; feature tabs retain arrow/Home/End navigation. On phones, the choices sit above the transcript. Hardware buttons update the concept illustration and specifications.
 
 ## October 12 review revisions
 
@@ -46,3 +46,8 @@ The main demo has three tasks and six stages. It starts in Execute and advances 
 - Replaced career-fair examples with Walmart groceries and Airtable brand-deal tracking. Progress demonstrates YouTube view milestones and signed YouTube/X partnerships, with spoken replays.
 - The pendant body is a droplet connected to a continuous necklace by a metal ring. The desk version is a larger droplet resting on a low base.
 - Checked responsive widths of 320, 390, 768, and 1440px without horizontal page overflow, plus hardware toggles, scenario completion, progress replay, and signup spacing.
+
+
+## Conversation review
+
+The user asked to replace the three-column Voice/Plan/Browser demo with one or at most two stable views, following the interaction pattern on https://www.tryclean.ai/ (inspected through Aside). The result uses one conversation workspace with browser results inline and the three scenario choices on the right. Both speakers have animated voice waves and readable transcripts, including follow-up questions and corrections. The private-beta badge above the headline is removed. Other page sections retain the previous design.
