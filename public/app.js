@@ -235,6 +235,12 @@ const features = [
     bullets: ['Live progress on your brand deals', 'Speaks up at the milestones you set', 'Revisit and replay the results'],
     visual: `<div class="progress-card"><div><span>UPDATING AIRTABLE · SPEAKING</span><span>01 / 02</span></div><h4>Your brand deals are moving.</h4><div class="progress-meter"><span></span></div><div class="speech-heading"><span class="waveform" aria-hidden="true"></span>“YouTube deal marked signed. Updating the X partnership next.”</div></div><div class="history-item"><div>YouTube brand deal signed<span>AGREEMENT CONFIRMED · TRACKER UPDATED</span></div><button data-replay="deal">▷ REPLAY</button></div><div class="history-item"><div>Your video just passed 10,000 views<span>YOUTUBE · MILESTONE REACHED</span></div><button data-replay="views">▷ REPLAY</button></div><div class="history-item"><div>X partnership signed<span>NEXT DELIVERABLES ADDED TO AIRTABLE</span></div><button data-replay="partnership">▷ REPLAY</button></div><p id="replay-status" class="replay-status" role="status"></p>`,
   },
+  {
+    title: 'Your models.<br> Your agents.',
+    description: 'Bring the AI you already trust. Pick any model provider, plug in the agents you rely on, and switch whenever you like — November keeps the same voice and remembers you either way.',
+    bullets: ['Choose the model provider you prefer', 'Bring the agents you already use', 'Switch anytime without starting over'],
+    visual: `<div class="chat-you"><div class="chat-label">YOU</div>“Hand this one to my research agent — and use the faster model.”</div><div class="chat-november"><img src="assets/november-mascot.png" alt=""><div class="chat-message"><div class="speech-heading"><span class="waveform" aria-hidden="true"></span><span class="mono">NOVEMBER</span></div>“Switched. Your research agent is on it — same conversation, same memory.”</div></div><div class="memory-box"><div class="mono"><span>YOUR SETUP</span><span>SWAP ANYTIME ↗</span></div><div class="memory-pairs"><span>model</span><b>Faster, your pick</b><span>agent</span><b>Your research agent</b></div><div class="choice-chips" aria-label="Examples of models and agents you can connect"><span>Claude</span><span>GPT</span><span>Gemini</span><span>Llama</span><span>Your own agents</span></div></div>`,
+  },
 ];
 const replayMessages = {
   deal: '“Your YouTube brand deal is signed. I’ve updated the status in Airtable.”',

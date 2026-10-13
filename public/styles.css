@@ -940,7 +940,7 @@ h3 {
 
 .feature-tabs {
   display:grid;
-  grid-template-columns:1.25fr 1fr 1fr 1.2fr;
+  grid-template-columns:1.25fr 1fr .8fr 1.2fr 1.2fr;
   border-bottom:1px solid #c4d1e2;
   gap:0
 }
@@ -1264,6 +1264,24 @@ h3 {
 .memory-pairs b {
   font-weight:400;
   color:var(--ink)
+}
+
+.choice-chips {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid var(--line)
+}
+
+.choice-chips span {
+  font:11px var(--mono);
+  color:var(--ink);
+  background:#eff5fb;
+  border:1px solid #c4d1e2;
+  border-radius:999px;
+  padding:5px 10px
 }
 
 .progress-card {
@@ -2721,7 +2739,7 @@ h3 {
   .hero h1 { font-size:54px; }
   .hero-copy>p { font-size:14px; }
   .email-row input { width:100%; flex:auto; }
-  .feature-tabs { grid-template-columns:1.35fr 1fr .8fr 1.2fr; }
+  .feature-tabs { grid-template-columns:1.35fr 1fr .8fr 1.2fr 1.2fr; }
   .timeline-label { font-size:10px; }
   .timeline-steps button { font-size:11px; }
   .section-index { font-size:10px; }
